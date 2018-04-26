@@ -10,7 +10,7 @@ export default class App extends Component {
         <div className = "container">
           <Route exact path = "/" component = {MovieSearchContainer} />
           <Route path = "/movie/:id" component = { MovieDetailContainer} />
-          <Route path = "/info/:id" />
+          {/* <Route path = "/info/:id" /> */}
         </div>
       </Router>
     );

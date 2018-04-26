@@ -16,21 +16,21 @@ app.listen(8888);
 const url = 'http://localhost:8888';
 
 
-describe('express', () => {
+describe('express', ( ) => {
   beforeEach(() => {
-    nightmare = new Nightmare();
+    nightmare = new Nightmare({show: true});
   });
+
+  it("should load succesfully", () => axios.get(url).then(r => (r.status===200)));
 
   it('should have the correct page title', () =>
     nightmare
       .goto(url)
-      .evaluate(() => document.querySelector('body').innerText)
+      .evaluate(() => document.querySelector("h1").innerText)
       .end()
       .then((text) => {
-        expect(text).to.equal('Hello World');
+        expect(text).to.equal("Movie Finder");
       })
   );
-
-  it('returns the correct status code', () => axios.get(url)
-    .then(response => expect(response.status === 200)));
+  
 });

@@ -19,7 +19,6 @@ class MovieDetailContainer extends React.Component{
   movieRender() {
     const { fullData, index } = this.props;
     var fullMovie = fullData[index];
-
     return (
       <div className = "movieInfo">
         <h1>Movie Finder</h1>        
@@ -31,7 +30,7 @@ class MovieDetailContainer extends React.Component{
         <div className="row infoRow">
           <div className="col-md-4">
             <div className="moviePoster">
-              <Img src = {fullMovie.Poster} />              
+              <Img src = {fullMovie.Poster} />
             </div>
           </div>
 
@@ -43,16 +42,16 @@ class MovieDetailContainer extends React.Component{
               <div className="card-body">                
                 <h3><b>{fullMovie.Title}</b></h3>
                 <div className="row infoRow">                
-                  <div className="col-md-4 infoBubble">Released {fullMovie.Year}</div>
-                  <div className="col-md-4 infoBubble">{fullMovie.Runtime}</div>
-                  <div className="col-md-4 infoBubble">{fullMovie.Genre}</div>
+                  <div className="col-md-4 infoBubble"><div className = "bubble">{fullMovie.Year}</div></div>
+                  <div className="col-md-4 infoBubble"><div className = "bubble">{fullMovie.Runtime}</div></div>
+                  <div className="col-md-4 infoBubble"> <div className = "bubble">{fullMovie.Genre}</div></div>
                 </div>
 
                 <div className="row infoRow">
                   <div className="col-md-12"><b>Actors</b></div>
                 </div>                
-                {/* <div className="row"><div className="col-md-12">
-                {movie.Actors}</div></div> */}
+                <div className="row"><div className="col-md-12">
+                {fullMovie.Actors}</div></div>
                 <div className="row infoRow">
                   <div className="col-md-12"><b>Plot</b></div>
                 </div>

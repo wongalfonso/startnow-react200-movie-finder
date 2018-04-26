@@ -2,7 +2,6 @@ import axios from "axios";
 
 export const inputSearch = (search) => (dispatch, state) => {
   var requestMovies = axios.get(`/movie/search/${search}`);
-
   var arr = []
   var respArr = [];
   var element = {};
@@ -14,11 +13,14 @@ export const inputSearch = (search) => (dispatch, state) => {
           res.data.Search.map((ids, i) => {
             arr.push(ids.imdbID);
           })
-          console.log("data", res.data);
+          getInfo(arr)
           return { data: res.data }
-        })        
+        })
+        .catch(err => {
+          return { err };
+        })
   })
-  setTimeout(() => {
+  const getInfo = (arr) => {
     var requestInfo = axios.get(`/movie/info/${arr}`);
     dispatch({
       type: "GET_INFO",
@@ -30,7 +32,7 @@ export const inputSearch = (search) => (dispatch, state) => {
         return console.log(err);
       })
     })
-  }, 200)
+  }
 }
 
 // export function getMovieInfo(movie) {
@@ -52,6 +54,18 @@ export function updateInput(input) {
   }
 }
 
+export function inputError(error) {
+  return {
+    type: "INPUT_ERROR",
+    payload: { error }
+  }
+}
+export function resetInput(error) {
+  return {
+    type: "RESET_INPUT",
+    payload: { error }
+  }
+}
 export function updateMovies(fullInfo) {
   return {
     type: "GET_FULLDATA",
@@ -69,5 +83,12 @@ export function updateIndex(index) {
   return {
     type: "UPDATE_INDEX",
     payload: { index }
+  }
+}
+
+export function currentPage(pageNumber) {
+  return {
+    type: "UPDATE_PAGE",
+    payload: { pageNumber }
   }
 }

@@ -8,6 +8,8 @@ import thunk from "redux-thunk";
 import logger from "redux-logger";
 import App from './app';
 
+
+
 /* eslint-disable no-underscore-dangle */
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -25,3 +27,4 @@ render(
   </Provider>,
   document.getElementById('root')
 );
+
